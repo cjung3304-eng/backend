@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import db from "@/lib/db";
+import db from "@/app/lib/db";
 
 const SAFE_COLUMNS = `
   id,
@@ -33,7 +33,6 @@ export async function GET(_request, context) {
 
     const [rows] = await db.query(
       `SELECT ${SAFE_COLUMNS} FROM tbl_users WHERE id = ? LIMIT 1`,
-    
       [userId]
     );
 
